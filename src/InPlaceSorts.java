@@ -3,12 +3,9 @@ public abstract class InPlaceSorts {
 
     public static void insertionSort(int[] list1)
     {
-
-    }
-    public static void bubbleSort(int[] list1)
-    {
-        int swaps=1;
-        int stor=0;
+        int n = list1.length;
+        System.out.println("");
+        System.out.println("");
         System.out.println("Unsorted: ");
 
         for (int i=0; i<list1.length; i++)
@@ -16,58 +13,103 @@ public abstract class InPlaceSorts {
             System.out.print(list1[i]+" ");
         }
 
-        while (swaps!=0)
+        for (int i=1; i<n; ++i)
         {
-            swaps=0;
-            for (int i=0; i<list1.length; i++)
+            int key = list1[i];
+            int j = i-1;
+
+            while (j>=0 && list1[j] > key)
             {
-                if (i==list1.length-1)
-                {
-                    try
-                    {
-                        list1[i+1]=0;
-                    }
-                    catch(ArrayIndexOutOfBoundsException e)
-                    {
-                       break;
-                    }
-                }
-                if (list1[i]>list1[i+1])
-                {
-                    stor=list1[i];
-                    list1[i]=list1[i+1];
-                    list1[i+1]=stor;
-                    swaps++;
-                }
+                list1[j+1] = list1[j];
+                j = j-1;
             }
+            list1[j+1] = key;
         }
+
         System.out.println("");
         System.out.println("Sorted: ");
         for (int i=0; i<list1.length; i++)
         {
             System.out.print(list1[i]+ " ");
         }
+        System.out.println("");
+
     }
-    public static void selectionSort(int[] list1)
+    public static void bubbleSort(String[] list2)
     {
-        int store=0;
         int swaps=1;
-        int previousLowestIndex=list1[0];
-        int currentLowestIdx=list1[0];
-        int currentLowestVal=list1[0];
+        String stor="";
+        System.out.println("");
+        System.out.println("");
+        System.out.println("Unsorted: ");
+
+        for (int i=0; i<list2.length; i++)
+        {
+            System.out.print(list2[i]+" ");
+        }
         while (swaps!=0)
         {
-            for (int i=0; i<list1.length; i++)
+            swaps=0;
+            for (int i=0; i<list2.length; i++)
             {
-                if (currentLowestIdx>list1[i])
+                if (i==list2.length-1)
                 {
-                    currentLowestVal=list1[i];
-                    currentLowestIdx=i;
+                    try
+                    {
+                        list2[i+1]="de";
+                    }
+                    catch(ArrayIndexOutOfBoundsException e)
+                    {
+                        break;
+                    }
+                }
+                if (list2[i].compareTo(list2[i+1])>0)
+                {
+                    stor=list2[i];
+                    list2[i]=list2[i+1];
+                    list2[i+1]=stor;
+                    swaps++;
                 }
             }
-            list1[0 ]=currentLowestIdx;
-
-
         }
+        System.out.println("");
+        System.out.println("Sorted: ");
+        for (int i=0; i<list2.length; i++)
+        {
+            System.out.print(list2[i]+ " ");
+        }
+        System.out.println("");
+    }
+
+    public static void selectionSort(double[] list3)
+    {
+        System.out.println("");
+        System.out.println("");
+        System.out.println("Unsorted: ");
+        for (int i=0; i<list3.length; i++)
+        {
+            System.out.print(list3[i]+" ");
+        }
+
+        for (int i = 0; i < list3.length - 1; i++)
+        {
+            int index = i;
+            for (int j = i + 1; j < list3.length; j++)
+                if (list3[j] < list3[index])
+                    index = j;
+
+            double smallerNumber = list3[index];
+            list3[index] = list3[i];
+            list3[i] = smallerNumber;
+        }
+
+        System.out.println("");
+        System.out.println("Sorted: ");
+        for (int i=0; i<list3.length; i++)
+        {
+            System.out.print(list3[i]+ " ");
+        }
+        System.out.println("");
+
     }
 }
